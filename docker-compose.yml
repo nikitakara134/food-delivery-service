@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=dpg-d0qq1kre5dus739q1eq0-a.oregon-postgres.render.com
+      - DB_PORT=5432
+      - DB_NAME=delivery_bd
+      - DB_USER=delivery_bd_user
+      - DB_PASSWORD=4OeHUn5DK2JKCNtupxCmEO8epqBNSeF6
+      - JWT_SECRET=your-very-secure-secret-key-with-at-least-256-bits
+    # ELK can be removed if not needed
+    # depends_on:
+    #   - elk
+
+  # elk:
+  #   image: sebp/elk:8.6.2
+  #   ports:
+  #     - "5601:5601"
+  #     - "9200:9200"
+  #     - "5044:5044"
+  #     - "5000:5000"
+  #   environment:
+  #     - ES_JAVA_OPTS=-Xmx256m -Xms256m
+  #   volumes:
+  #     - elk_data:/var/lib/elasticsearch
+
+# volumes:
+#   elk_data:
